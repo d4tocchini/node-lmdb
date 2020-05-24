@@ -27,17 +27,24 @@ describe('Node.js LMDB Bindings', function() {
 
   before(function(done) {
     // cleanup previous test directory
-    rimraf(testDirPath, function(err) {
+    rimraf(testDirPath, async function(err) {
       if (err) {
         return done(err);
       }
       // setup clean directory
-      mkdirp(testBackupDirPath, function(err) {
+      mkdirp(testDirPath, function(err) {
         if (err) {
           return done(err);
         }
         done();
       });
+      // try {
+      //   await mkdirp(testDirPath);
+      //   done();
+      // }
+      // catch (err) {
+      //   return done(err);
+      // }
     });
   });
   it('will construct, open and close an environment', function() {
@@ -299,6 +306,7 @@ describe('Node.js LMDB Bindings', function() {
       txn.putString(dbi, 'hello', 'world');
       txn.commit();
       env.copy(testBackupDirPath, (error) => {
+
         done(error)
       });
 //      console.log('sent copy')

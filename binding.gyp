@@ -2,7 +2,7 @@
   "targets": [
     {
       "target_name": "node-lmdb",
-      "win_delay_load_hook": "false",
+      "__win_delay_load_hook": "true",
       "sources": [
         "dependencies/lmdb/libraries/liblmdb/mdb.c",
         "dependencies/lmdb/libraries/liblmdb/midl.c",
@@ -48,10 +48,23 @@
         ["OS=='mac'", {
           "xcode_settings": {
             "OTHER_CPLUSPLUSFLAGS" : ["-std=c++11"],
-            "MACOSX_DEPLOYMENT_TARGET": "10.7",
+            "MACOSX_DEPLOYMENT_TARGET": "10.12",
             "OTHER_LDFLAGS": ["-std=c++11"],
             "CLANG_CXX_LIBRARY": "libc++"
-          }
+          },
+          "ldflags": [
+            "-fPIC",
+            "-fvisibility=hidden"
+          ],
+          "cflags": [
+            "-fPIC",
+            "-fvisibility=hidden"
+          ],
+          "cflags_cc": [
+            "-fPIC",
+            "-fvisibility=hidden",
+            "-fvisibility-inlines-hidden",            
+          ]
         }],
         ["OS=='win'", {
             "libraries": ["ntdll.lib"]

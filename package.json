@@ -31,20 +31,23 @@
   "version": "0.6.2",
   "main": "./index.js",
   "scripts": {
+    "build-electron": "HOME=~/.electron-gyp node-gyp rebuild  --target=9.0.0 --runtime=electron --arch=x64 --dist-url=https://electronjs.org/headers",
     "test": "./node_modules/.bin/mocha test/**.test.js --recursive",
+    "test-electron_": "ELECTRON_RUN_AS_NODE=1 ./node_modules/.bin/electron ./node_modules/.bin/mocha test/**.test.js --recursive",
+    "test-electron": "export PATH=\"/usr/local/d4/code/d4/pkg/@d4/app_darwin/master/The Grid.app/Contents/MacOS:${PATH}\" && mocha test/**.test.js --recursive",
     "benchmark": "node ./benchmark/index.js"
   },
   "gypfile": true,
   "dependencies": {
-    "nan": "^2.13.1"
+    "nan": "^2.14.1"
   },
   "devDependencies": {
     "benchmark": "^2.1.4",
     "chai": "^3.5.0",
-    "mkdirp": "^0.5.1",
-    "mocha": "^5.2.0",
-    "node-gyp": "^3.6.0",
-    "rimraf": "^2.6.1",
-    "jshint": "^2.9.4"
+    "mkdirp": "^1.0.4",
+    "mocha": "^7.2.0",
+    "node-gyp": "6.1.0",
+    "rimraf": "3.0.2",
+    "jshint": "^2.11.1"
   }
 }

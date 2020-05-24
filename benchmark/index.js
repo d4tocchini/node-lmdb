@@ -29,6 +29,13 @@ function cleanup(done) {
       }
       done();
     });
+    // try {
+    //   await mkdirp(testDirPath);
+    //   done();
+    // }
+    // catch (err) {
+    //   return done(err);
+    // }
   });
 }
 
